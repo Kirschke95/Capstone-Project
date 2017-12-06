@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.easyLabel = new System.Windows.Forms.Label();
+            this.difficultyLabel = new System.Windows.Forms.Label();
             this.easyQuestion = new System.Windows.Forms.Label();
             this.beginButton = new System.Windows.Forms.Button();
             this.AChoice = new System.Windows.Forms.Button();
@@ -43,18 +43,18 @@
             this.continueButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // easyLabel
+            // difficultyLabel
             // 
-            this.easyLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.difficultyLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.easyLabel.AutoSize = true;
-            this.easyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.easyLabel.Location = new System.Drawing.Point(110, 9);
-            this.easyLabel.Name = "easyLabel";
-            this.easyLabel.Size = new System.Drawing.Size(158, 31);
-            this.easyLabel.TabIndex = 0;
-            this.easyLabel.Text = "Easy Mode";
+            this.difficultyLabel.AutoSize = true;
+            this.difficultyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.difficultyLabel.Location = new System.Drawing.Point(110, 9);
+            this.difficultyLabel.Name = "difficultyLabel";
+            this.difficultyLabel.Size = new System.Drawing.Size(124, 31);
+            this.difficultyLabel.TabIndex = 0;
+            this.difficultyLabel.Text = "difficulty";
             // 
             // easyQuestion
             // 
@@ -75,6 +75,7 @@
             this.beginButton.TabIndex = 2;
             this.beginButton.Text = "Let\'s Go";
             this.beginButton.UseVisualStyleBackColor = true;
+            this.beginButton.Visible = false;
             this.beginButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // AChoice
@@ -208,7 +209,7 @@
             this.Controls.Add(this.AChoice);
             this.Controls.Add(this.beginButton);
             this.Controls.Add(this.easyQuestion);
-            this.Controls.Add(this.easyLabel);
+            this.Controls.Add(this.difficultyLabel);
             this.Name = "Form2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Easy Mode";
@@ -220,7 +221,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label easyLabel;
+        private System.Windows.Forms.Label difficultyLabel;
         private System.Windows.Forms.Label easyQuestion;
         private System.Windows.Forms.Button beginButton;
         private System.Windows.Forms.Button AChoice;

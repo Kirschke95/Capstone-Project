@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace TriviaGameForm
 {
-    
+
     public partial class Trivia : Form
     {
         string modeChoice = "";
@@ -47,30 +47,29 @@ namespace TriviaGameForm
         private void setMode(object sender, EventArgs e)
         {
             string difficultyChoice = sender.ToString();
-            Form2 EasyMode;
-            EasyMode = new Form2();
-            Form3 MediumMode;
-            MediumMode = new Form3();
-            Form4 HardMode;
-            HardMode = new Form4();
-
+            string modeChoice = "";
+            
+            
             switch (difficultyChoice)
             {
                 case "System.Windows.Forms.Button, Text: EASY":
                     modeChoice = "easy";
-                    EasyMode.Show();
                     break;
                 case "System.Windows.Forms.Button, Text: MEDIUM":
                     modeChoice = "medium";
-                    EasyMode.Show();
                     break;
                 case "System.Windows.Forms.Button, Text: HARD":
                     modeChoice = "hard";
-                    EasyMode.Show();
                     break;
                 default:
                     break;
             }
+
+            Form2 Game;
+            Game = new Form2(modeChoice);
+            Game.Show();
+            
+
         }
     }
 }

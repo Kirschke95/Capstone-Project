@@ -16,11 +16,47 @@ namespace TriviaGameForm
         string[] questions = new string[0];
         string[] answersArray = new string[4];
         string correctButton;
-        StreamReader easyTrivia = new StreamReader(@"E:\Fall 2017\CIT 110\CapstoneProjectTRIVIA\TriviaQuestionsEasy.txt");
-        
-        public Form2()
+        //string modeChoice;
+        //StreamReader triviaQuestions = new StreamReader(@"E:\Fall 2017\CIT 110\CapstoneProjectTRIVIA\TriviaQuestionsEasy.txt");
+        StreamReader triviaQuestions;
+        string modeChoice = "";
+        public Form2(string modeChoice)
         {
-            InitializeComponent();
+            //bool modeSet = false;
+            InitializeComponent();           
+            SetDifficulty(modeChoice);           
+        }
+
+        private void SetDifficulty(string modeChoice)
+        {
+            string dataPath = "";
+            switch (modeChoice)
+            {
+                case "easy":
+                    dataPath = @"E:\Fall 2017\CIT 110\CapstoneProjectTRIVIA\TriviaQuestionsEasy.txt";
+                    difficultyLabel.Text = "Easy Mode";
+                    modeChoice = "easy";
+                    break;
+                case "medium":
+                    dataPath = @"E:\Fall 2017\CIT 110\CapstoneProjectTRIVIA\TriviaQuestionsMedium.txt";
+                    difficultyLabel.Text = "Medium Mode";
+                    modeChoice = "medium";
+                    break;
+                case "hard":
+                    dataPath = @"E:\Fall 2017\CIT 110\CapstoneProjectTRIVIA\TriviaQuestionsHard.txt";
+                    difficultyLabel.Text = "Hard Mode";
+                    modeChoice = "hard";
+                    break;
+                default:
+                    break;
+            }
+
+
+            //StreamReader triviaQuestions = new StreamReader(dataPath);
+            triviaQuestions = new StreamReader(dataPath);
+               DisplayQuestions(triviaQuestions);
+           
+            
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -32,7 +68,8 @@ namespace TriviaGameForm
         {
             
             beginButton.Visible = false;
-            DisplayQuestions(easyTrivia);
+            SetDifficulty(modeChoice);
+            //DisplayQuestions(triviaQuestions);
 
         }
 
@@ -65,16 +102,16 @@ namespace TriviaGameForm
             
         }
 
-        private void DisplayQuestions(StreamReader easyTrivia)
+        private void DisplayQuestions(StreamReader triviaQuestions)
         {
-            string line = easyTrivia.ReadLine();
+            string line = triviaQuestions.ReadLine();
            
             bool visible = true;
             SetButtonsVisible(visible);
             continueButton.Visible = false;
 
             easyQuestion.Text = line;
-            string answer = easyTrivia.ReadLine();
+            string answer = triviaQuestions.ReadLine();
             answersArray = answer.Split(',');
             string correctAnswer = answersArray[0];
             SetButtonAnswers(answersArray);
@@ -110,9 +147,7 @@ namespace TriviaGameForm
 
             continueButton.Visible = true;
             bool visible = false;
-            SetButtonsVisible(visible);
-            
-            
+            SetButtonsVisible(visible);                                 
         }
 
         private void SetButtonAnswers(string[] answersArray)
@@ -162,7 +197,7 @@ namespace TriviaGameForm
 
         private void continueButton_Click(object sender, EventArgs e)
         {
-            DisplayQuestions(easyTrivia);
+            DisplayQuestions(triviaQuestions);           
             Score.Visible = false;
         }
     }
