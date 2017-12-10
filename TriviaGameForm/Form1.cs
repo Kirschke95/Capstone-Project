@@ -13,17 +13,19 @@ namespace TriviaGameForm
 
     public partial class Trivia : Form
     {
-        string modeChoice = "";
+        /// <summary>
+        /// initializes first form
+        /// </summary>
         public Trivia()
         {
             InitializeComponent();
-        }
+        }             
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// TRICK button! LOL
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void wrongClick(object sender, EventArgs e)
         {
             welcomeLabel.Text = "Wrong click fool, try again.";
@@ -31,6 +33,11 @@ namespace TriviaGameForm
             welcomeLabel.ForeColor = System.Drawing.Color.FromArgb(255, 0, 0);
         }
 
+        /// <summary>
+        /// advances through program with begin click, to select user difficulty
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void nextScreen(object sender, EventArgs e)
         {
             wrongButton.Visible = false;
@@ -44,12 +51,17 @@ namespace TriviaGameForm
             hardButton.Visible = true;
         }
 
+        /// <summary>
+        /// takes a button press and converts it to a string and use a switch statement in order to set modeChoice and
+        /// send it to the second form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void setMode(object sender, EventArgs e)
         {
             string difficultyChoice = sender.ToString();
             string modeChoice = "";
-            
-            
+
             switch (difficultyChoice)
             {
                 case "System.Windows.Forms.Button, Text: EASY":
@@ -65,10 +77,24 @@ namespace TriviaGameForm
                     break;
             }
 
-            Form2 Game;
-            Game = new Form2(modeChoice);
+            GameForm Game;
+            Game = new GameForm(modeChoice);
             Game.Show();
-            
+            this.Hide();
+
+        }
+
+        private void Trivia_Load(object sender, EventArgs e)
+        {
+
+        }
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
 
         }
     }
